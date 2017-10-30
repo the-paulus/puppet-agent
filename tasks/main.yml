@@ -1,0 +1,16 @@
+---
+- name: Install puppet agent
+  package:
+    state: installed
+    name: puppet
+  when: puppet_agent_install == True
+
+- name: Start and enable puppet agent service
+  service:
+    name: puppet
+    enabled: yes
+    state: started
+
+- name: Sign certificate for agent
+  shell: "puppet cert sign {{ ansible_fqdn }}"
+  delegate_to: "{{ item.server }}"
