@@ -10,7 +10,7 @@ galaxy_info:
 
   platforms:
   - name: all
-      versions:
+    versions:
       - all
 
   galaxy_tags:
