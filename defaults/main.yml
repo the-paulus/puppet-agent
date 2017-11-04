@@ -1,2 +1,8 @@
 ---
-puppet_agent_install: no
+puppet_agent_configuration:
+- main:
+    certname: puppet-agent.localdomain
+    server: "{{puppet_ca_master['server']}}"
+- agent:
+    report: true
+    environment: production
