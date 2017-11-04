@@ -3,14 +3,17 @@
   package:
     state: installed
     name: puppet
-  when: puppet_agent_install == True
+
+- name: Configure puppet agent: main
+  shell: "puppet config set {{item.key}} \"{{item.value}}\" main"
+  with_dict: "{{ puppet_agent_configuration['main'] }}"
+
+- name: Configure puppet agent: agent
+  shell: "puppet config set {{item.key}} \"{{item.value}}\" agent"
+  with_dict: "{{ puppet_agent_configuration['agent']}}"
 
 - name: Start and enable puppet agent service
   service:
     name: puppet
     enabled: yes
     state: started
-
-- name: Sign certificate for agent
-  shell: "puppet cert sign {{ ansible_fqdn }}"
-  delegate_to: "{{ item.server }}"
