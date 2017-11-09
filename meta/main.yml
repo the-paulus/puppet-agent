@@ -20,4 +20,3 @@ galaxy_info:
 
 dependencies:
 - src: the-paulus.puppet
-  version: v1.0.0
