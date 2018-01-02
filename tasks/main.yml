@@ -4,12 +4,12 @@
     state: installed
     name: puppet
 
-- name: Configure puppet agent: main
-  shell: "puppet config set {{item.key}} \"{{item.value}}\" main"
+- name: "Configure puppet agent: main"
+  shell: "puppet config set --section main {{item.key}} \"{{item.value}}\""
   with_dict: "{{ puppet_agent_configuration['main'] }}"
 
-- name: Configure puppet agent: agent
-  shell: "puppet config set {{item.key}} \"{{item.value}}\" agent"
+- name: "Configure puppet agent: agent"
+  shell: "puppet config set --section agent {{item.key}} \"{{item.value}}\""
   with_dict: "{{ puppet_agent_configuration['agent']}}"
 
 - name: Start and enable puppet agent service
