@@ -1,8 +1,8 @@
 ---
 puppet_agent_configuration:
-- main:
-    certname: puppet-agent.localdomain
-    server: "{{puppet_ca_master['server']}}"
-- agent:
+  main:
+    certname: puppet.example.com
+    server: puppet.example.com
+  agent:
     report: true
     environment: production
